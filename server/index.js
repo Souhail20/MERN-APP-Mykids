@@ -1,0 +1,15 @@
+const express=require("express")
+const app=express()
+const connectDB=require('./db/connectDB')
+const itemRoutes =require('./routes/items')
+const cors=require('cors')
+const port= process.env.PORT|| 5000
+app.use(cors())
+app.use(express.json())
+connectDB()
+app.use('/api',require('./routes/userRoute'))
+app.use('/items',itemRoutes)
+app.get('/',(req,res)=>{
+    res.send('Hello')
+})
+app.listen(port,err=>err?console.log(err):console.log(`server is running on port ${port}`))

@@ -1,0 +1,361 @@
+import React from 'react'
+import styled from 'styled-components';
+import CtaButton from './CtaButton';
+
+function GradientCard({image, avatar, name, title, ctaButton}) {
+    return (
+        
+        <GradientCardStyled>
+            <div id="g-card">
+                <div className="inner-content">
+                    <div className="image">
+                        <img src={image} alt="" />
+                        <div className="name">
+                            <img src={avatar} alt="" />
+                            <p>{name}</p>
+                        </div>
+                    </div>
+                    <div className="card-content">
+                        <h6 className="card-title">{title}</h6>
+                        <div className="duration">
+                        <CtaButton name={'هيا معا'}  />              
+                        </div>                  
+                        <div className="cta-btn">
+                            {ctaButton}
+                        </div>                     
+                    </div>
+                </div>
+            </div>
+        </GradientCardStyled>
+    )
+}
+const GradientCardStyled = styled.div`
+    border-radius: 20px;
+    font-size: 1rem;
+    transition: all 1s ease-in-out;
+    background: linear-gradient(130deg,#eb3fa9,#395ff6 50%,#eb3fa9);
+    animation: colors 3s infinite ease-in-out;
+    @keyframes colors {
+        0%{
+            background: linear-gradient(130deg,#eb3fa9,#395ff6 50%,#eb3fa9);
+        }
+        50%{
+            background: linear-gradient(90deg, #7F41DB 0%, #022894 100%);
+        }
+        70%{
+            background: linear-gradient(130deg,#022894  0%, #7F41DB 100%);
+        }
+        100%{
+            background: linear-gradient(130deg,#eb3fa9,#395ff6 50%,#eb3fa9);
+        }
+    }
+    #g-card{
+        margin: .2rem;
+        .inner-content{
+            background-color: #091026;
+            padding: .8rem;
+            border-radius: 20px;
+        }
+        .image{
+            width: 100%;
+            position: relative;
+            img:first-child{
+                width: 100%;
+                object-fit: cover;
+                height: 300px;
+                border-radius: 10px;
+            }
+            .name{
+                position: absolute;
+                left: 50%;
+                bottom: -26px;
+                background-color: #03091f;
+                display: flex;
+                flex-wrap: ;
+                align-items: center;
+                transform: translateX(-50%);
+                width: 75%;
+                padding: .5rem .5rem;
+                border-radius: 70px;
+                border: 1px solid rgba(255,255,255, 0.8);             
+                img{
+                    width: 45px;
+                    object-fit: cover;
+                    height: 45px;
+                    border-radius: 50%;
+                    margin-right: 2rem;
+                }
+            }
+        }
+        .card-content{
+            padding-top: 3rem;
+            .card-title{
+                font-size: 1.3rem;
+                font-weight: 500;
+                padding-bottom: .6rem;
+            }
+            .price{
+                color: #6BBE92;
+            }
+            .l-text{
+                opacity: 0.5;
+            }
+            .duration{
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px dashed rgba(255,255,255, 0.2);
+                display: flex;
+                justify-content: space-between;
+                p{
+                    display: flex;
+                    align-items: center;
+                    img{
+                        object-fit: cover;
+                        width: 18px;
+                        margin-right: .6rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+
+            .cta-btn{
+                width: 100%;
+                a{
+                    margin: .6rem 0;
+                    display: inline-block;
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+        
+    }
+`;
+export default GradientCard;
+
+
+
+
+
+
+
+import React from 'react';
+import { SectionStyled } from './Layouts';
+import GradientCard from './GradientCard';
+import styled from 'styled-components';
+import musiclogo from '../img/musiclogo.webp';
+import achkal from '../img/achkal.jpg';
+import hourouf from '../img/hourouf.webp';
+import salat from '../img/salat.jpg';
+import stories from '../img/stories.jpg';
+import memory from '../img/memory.png'
+import colors from '../img/colors.jpg';
+import avatar from '../img/avatar.png';
+import {Link} from 'react-router-dom';
+
+function GradientCardsSection() {
+    return (
+        <GradientCardsSectionStyled>
+            <SectionStyled>              
+                <div className="gradient-cards-con">
+                    <Link to ="/Playmusic">
+                    <GradientCard image={musiclogo} avatar={avatar} name={'الأغاني'}  title={'نسمعو الاغاني مع بعضنا'}/>
+                    </Link>
+                    <Link to='/hourouf'>
+                    <GradientCard image={achkal} avatar={avatar} name={'الأشكال'}  title={'هيا نتعلم الاشكال'}  />
+                    </Link>
+                    <Link to ='/Letters'>
+                    <GradientCard image={hourouf} avatar={avatar} name={'الحروف'}  title={'هيا نتعلم الحروف'}  />
+                    </Link>
+                    <Link to='/Stories'>
+                    <GradientCard image={stories} avatar={avatar} name={'قصص'}  title={'هيا نستمتع بالقصص'}  />
+                    </Link>
+                    <Link to='/Colors'>
+                    <GradientCard image={colors} avatar={avatar} name={'الألوان'}  title={'هيا نتعلم الحواس'} />
+                    </Link>
+                    <Link to='/Games'>
+                    <GradientCard image={memory} avatar={avatar} name={'لعبة الذكريات'}  title={'هيا نلعب معا'} />
+                    </Link>
+                    <GradientCard image={salat} avatar={avatar} name={'تعليم الصلاة'}  title={'هيا نتعلم الصلاة'}  /> 
+                                    
+                </div>     
+            </SectionStyled>
+        </GradientCardsSectionStyled>
+    )
+}
+const GradientCardsSectionStyled = styled.div`
+    .load{
+        padding-top: 3rem;
+        text-align: center;
+    }
+`;
+
+// GradientCardsSection.defaultProps = {
+//     linkk :"/Games"
+// }
+
+export default GradientCardsSection;
+ 
+
+
+
+import React from 'react'
+import styled from 'styled-components';
+import { createItem, getItems } from "../admin/function";
+import { useEffect, useState } from "react";
+import {Link} from 'react-router-dom';
+
+function GradientCard(props) {
+    const [item, setItem] = useState({ image: "", title: "", description: "" });
+  const [items, setItems] = useState([]);
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    const result = await createItem(item);
+    setItems([...items, result]);
+  };
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getItems();
+      console.log("fetch data;m", result);
+      setItems(result);
+    };
+    fetchData();
+  }, []);
+    return (
+        <GradientCardStyled>
+                {items?.map((slide) => (
+          <div className="gradient-cards-con">
+            <div id="g-card" key={slide._id}>
+              <div className="inner-content">
+                <div className="image">
+                <Link to ={props.linkk}>
+                  <img src={slide.image} alt="" />
+                  </Link>
+                  <div className="name">
+                    <img src={slide.image} alt="" />
+                    <p>{slide.title}</p>
+                  </div>
+                </div>
+                <div className="card-content">
+                  <h6 className="card-title">{slide.description}</h6>
+                </div>
+              </div>
+            </div>  
+            </div> 
+               
+        ))}
+        </GradientCardStyled>
+    )
+}
+
+const GradientCardStyled = styled.div`
+    border-radius: 20px;
+    font-size: 1rem;
+    transition: all 1s ease-in-out;
+    background: linear-gradient(130deg,#eb3fa9,#395ff6 50%,#eb3fa9);
+    animation: colors 3s infinite ease-in-out;
+    @keyframes colors {
+        0%{
+            background: linear-gradient(130deg,#eb3fa9,#395ff6 50%,#eb3fa9);
+        }
+        50%{
+            background: linear-gradient(90deg, #7F41DB 0%, #022894 100%);
+        }
+        70%{
+            background: linear-gradient(130deg,#022894  0%, #7F41DB 100%);
+        }
+        100%{
+            background: linear-gradient(130deg,#eb3fa9,#395ff6 50%,#eb3fa9);
+        }
+    }
+    #g-card{
+        margin: .2rem;
+        .inner-content{
+            background-color: #091026;
+            padding: .8rem;
+            border-radius: 20px;
+        }
+        .image{
+            width: 100%;
+            position: relative;
+            img:first-child{
+                width: 100%;
+                object-fit: cover;
+                height: 300px;
+                border-radius: 10px;
+            }
+            .name{
+                position: absolute;
+                left: 50%;
+                bottom: -26px;
+                background-color: #03091f;
+                display: flex;
+                flex-wrap: ;
+                align-items: center;
+                transform: translateX(-50%);
+                width: 75%;
+                padding: .5rem .5rem;
+                border-radius: 70px;
+                border: 1px solid rgba(255,255,255, 0.8);
+                
+                img{
+                    width: 45px;
+                    object-fit: cover;
+                    height: 45px;
+                    border-radius: 50%;
+                    margin-right: 2rem;
+                }
+            }
+        }
+        .card-content{
+            padding-top: 3rem;
+            .card-title{
+                font-size: 1.3rem;
+                font-weight: 500;
+                padding-bottom: .6rem;
+            }
+            .price{
+                color: #6BBE92;
+            }
+            .l-text{
+                opacity: 0.5;
+            }
+            .duration{
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px dashed rgba(255,255,255, 0.2);
+                display: flex;
+                justify-content: space-between;
+                p{
+                    display: flex;
+                    align-items: center;
+                    img{
+                        object-fit: cover;
+                        width: 18px;
+                        margin-right: .6rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+
+            .cta-btn{
+                width: 100%;
+                a{
+                    margin: .6rem 0;
+                    display: inline-block;
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+        
+    }
+`;
+GradientCard.defaultProps = {
+    linkk :"/Games"
+}
+export default GradientCard;
